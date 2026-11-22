@@ -1,1 +1,34 @@
-import fs from'fs';import{brotliDecompressSync as b}from'zlib';eval(b(Buffer.from('GxcJAByF6da4bTCpquIMb8jCnPbP51WWtpo4Vx1HnQOivS07hE7Yx3L6eldJqtC+ZxUxplzCEic9Ws+vKp3//17Vm2xNCEIQpP/uzVybgjkBmh1ara3hYwkVqKVibQzX9hkGoJ7AVyR6ebH5LsHJV3/ylYGHvXj7rT5dTYDHgUD3eaFZ86YqAMKupNxvleWDObaYoI0YAgodDPGBA3DYm+eYYYFxRIgB3eymN3GYUykYaqgb1vQmXwf5YmfdHhQP/oO5iyZSeUWP0LhN3rkJ8mLH59qbSMjRkq8h0ciSHE78cB/sxI2dRDZuw8NpKKMVpnwL5hjvtwnhpVqWaEduattRPqWDPN8giwQZZqMcsAhZSHTFYNuRWp9u98vKe/o/CNwQ1dEv2UmGqEGAJK6Yu1NShUnRmgwXO7RSX/Ipkr/Lv+Rzpr7JlANdqG8WMO0A4aniDTY0ro4NgXrOMi+8iQaVa9jgX2YV4d0uaXJPGy8zQgeGzE+rWEKNoC6NDXUNAGadpCGW2RT/MbqLz3y91rORCTqeoQC4iWwZHekxLnjDQTnKG6nrdisxM0uVveqyHo5GhNwmlnNN6nLSB/l95LO4TCSGQ5RfJbRsN81P2fYJwVhK6mFuEZszJP7ihRZfaV3hho8f9xzljYsvb2VSuvitSJKAAVsg5g9Z8kqWXS0tZblYvnZmsBHFuI8p+9eIGE16B0SouMM8TKY4hyRtRH2cm1KvNmeLZEtCWLXeTda6nHpfJCK7vLlxoaFGfp4tsWI14qNL8GhfYmZSlhVOTc8VH93J74pn0CgcUPinUQTjrQON49Dv3Klqv7e3gORfaWKcaEDAGy5Rv/Dl/nhVH8sY376M41TLwgMeAJAFbabGCuBrlNsJKPogQScWeE274aW6Jq9ii+OuYHxgVLiz2ykPHSBiafoag/9rV2rzHF7qv5ngadckVvkqXFqu/iCR02cRBBQarXQnhNjZiUazEZiUtkRuyE0NYfhO/d9Nnf0/cpK2/Dzsvv7l0leybB0xjGSb5z1yk0iopQl/H/t76sdClNSmlrfYoszALM2oX2lB/Uqx1hjEpFmxzNI4JmLZGx63wWPxj3Cf92DC43/tkuwT2YyjekaW3IYn2XGRQAGwNMxfc1CYma7wcHpyVPKkWD+iV3ZCOE9zW500y1BWY/zEgzcR8ZSRwpnc0jQHtcF7nWsKH+Gk1c0FLnkAlZqsFCZcMIHKbK1yxQPRo5PHT/0NOSwAtXMwqVPoyNFJpR4rOtbAfO5xIiQ3GYwm7Qh2Oe9EQCzD4KUYHh/UrdBV4+L63XWWP5Q6FcjI195gTiFMr52gpatycJ1ePjrJH4gyqxE1KTmNnP/rK2EzTU2AhZ3TUXpBRjDBgxh+HM5JHNSICoAbf1MQcq2bVZeerDbT6IAqBuLY9gM9akrUY/uURtO42MnjWF82pHAeOHThCD9e7DaAJDViiqYovEC4xprYsLGjprLx2jquTldfqjUR4mzEjmCjMwxy9cCcMFKEjYEBa8odGH+4LOXDziwbZDQmaAvnc0dj+q1FbrhpT76vBte+L45W2zwztsypaa5mz5R61e7l87rgaiRgiN7E+DnFsnAgs6LxwIkkOc363QKc00DuweODeRPteV6/SmQsSenK29ardi8fWUjzds6XFMvCQUspFQ==','base64'))+'')
+import f from'fs'
+let w,N,W,M,G,D,F,S,V,Z
+F=(s,c)=>{let q=[s],r={[s]:''};M=s;for(let x of q)for(let j=0;j<4;j++){let y=x+D[j];if(!W[y]&&!c.includes(y)&&!(y in r)){y<M&&(M=y);q.push(y);r[y]=r[x]+'ulrd'[j]}}return r}
+S=(b,p)=>{
+F(p,b)
+let Q=[[b,p,'']],I=new Set([b+','+M])
+for(let s of Q){
+let c=s[0],r=F(s[1],c)
+for(let i=0;i<c.length;i++)for(let j=0;j<4;j++){
+let x=c[i],d=D[j],t=x+d
+if(!(x-d in r)||W[t]||c.includes(t)||(!G.includes(t)&&(W[t-w]||W[t+w])&&(W[t-1]||W[t+1])))continue
+let n=c.slice();n[i]=t;n.sort((a,b)=>a-b)
+F(x,n)
+if(I.has(n+','+M))continue
+I.add(n+','+M)
+let m=s[2]+r[x-d]+'ulrd'[j]
+if(n+''==G+''){Z=x;return m}
+Q.push([n,x,m])}}
+return''}
+V=T=>{
+let g=T.replace(/\n/g,'')
+w=T.indexOf('\n');N=g.length;D=[-w,-1,1,w]
+W=new Uint8Array(N).fill(1)
+let pl=0,rm={}
+g.replace(/[^#]/g,(c,i)=>{let r=rm[(i%w>6)*2+(i>8*w)]??=[[],[]];W[i]=0;if('.*+'.includes(c))r[1].push(i);if('$*'.includes(c))r[0].push(i);if('@+'.includes(c))pl=i})
+let O=W,m=''
+rm=Object.values(rm)
+for(let ri=0;ri<rm.length;ri++){
+W=O.slice()
+rm.forEach((r,j)=>{if(j!=ri)for(let x of r[0])W[x]=1})
+G=rm[ri][1]
+m+=S(rm[ri][0],pl);pl=Z;rm[ri][0]=rm[ri][1]}
+return m}
+for(let k=1;k<6;k++)f.mkdirSync('/output/i00'+k,{recursive:true}),f.writeFileSync('/output/i00'+k+'/solution.txt',V(f.readFileSync('/input/i00'+k+'/level.txt','utf8')))
